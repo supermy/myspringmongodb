@@ -2,8 +2,9 @@ package com.supermy.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.document.mongodb.MongoTemplate;
-import org.springframework.data.document.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+
 import com.mongodb.Mongo;
 
 /**
@@ -22,7 +23,13 @@ public class SpringMongoConfig extends AbstractMongoConfiguration {
 	@Override
 	public @Bean MongoTemplate mongoTemplate() throws Exception {
 
-		return new MongoTemplate(mongo(),"yourdb","yourCollection");
+		return new MongoTemplate(mongo(),"yourdb");
+	}
+
+	@Override
+	public String getDatabaseName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 		
 }
